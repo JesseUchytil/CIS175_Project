@@ -24,6 +24,12 @@ public class AccountHelper {
 		return list;
 	}
 	
+	public List<Account> findAccountById(int id) {
+		EntityManager em = emfactory.createEntityManager();
+		List<Account> list = em.createQuery("SELECT acc FROM Account acc WHERE acc.id= '"+id+"'", Account.class).getResultList();
+		return list;
+	}
+	
 	public List<Account> getAllAccounts(){
 		EntityManager em = emfactory.createEntityManager();
 		List<Account> list = em.createQuery("SELECT acc FROM Account acc", Account.class).getResultList();
